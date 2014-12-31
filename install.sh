@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# run curl 'http://dante.kollok.org/a.sh' > install.sh && chmod +x install.sh && sudo ./install.sh
+# run curl 'https://raw.githubusercontent.com/D4nte/chef/master/install.sh' > install.sh && chmod +x install.sh && sudo ./install.sh
 
 # better ruby install https://www.rosehosting.com/blog/how-to-install-ruby-2-0-and-rubygems-2-1-11-on-ubuntu-13-10-from-source/
 
