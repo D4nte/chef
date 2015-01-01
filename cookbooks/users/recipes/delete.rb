@@ -1,7 +1,8 @@
 ## Used for testing only
 
-username = "dante"
-userhome = "/home/" + username 
+node[:users].each do |user|
+  username = user[:username]
+  userhome = "/home/" + username 
 
 # delete ssh pub keys
 file userhome + "/.ssh/authorized_keys" do
@@ -13,9 +14,11 @@ directory userhome + "/.ssh" do
 end
 
 # delete users
-user "dante" do
+user username do
   supports :manage_home => true
   action :remove 
+end
+
 end
 
 # delete groups

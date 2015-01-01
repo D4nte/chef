@@ -10,12 +10,15 @@ group "kolloksudoers" do
   action :create
 end
 
-username = "dante"
+
+node[:users].each do |user|
+username = user[:username]
+uid = user[:uid]
 userhome = "/home/" + username 
 
 # Create users
 user username do
-  uid "2000"
+  uid uid
   gid "kollokusers"
   home userhome
   shell "/bin/bash"
@@ -42,4 +45,6 @@ cookbook_file userhome + "/.ssh/authorized_keys" do
   mode 0600
   owner username
   group "kollokusers"
+  ignore_failure true
+end
 end
