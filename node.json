@@ -1,6 +1,6 @@
 {
   "run_list": [ "recipe[users::delete]", "recipe[users]" ],
-  "users": [ { "username": "dante",    "uid": "2000" },
+  "kollokusers": [ { "username": "dante",    "uid": "2000" },
              { "username": "josay",    "uid": "2001" },
              { "username": "jean",     "uid": "2002" },
              { "username": "sitaktif", "uid": "2003" } ]

@@ -11,7 +11,7 @@ group "kolloksudoers" do
 end
 
 
-node[:users].each do |user|
+node[:kollokusers].each do |user|
 username = user[:username]
 uid = user[:uid]
 userhome = "/home/" + username 
@@ -40,11 +40,19 @@ directory userhome + "/.ssh" do
   action :create
 end
 
+sshpub = username + "/ssh.pub"
 cookbook_file userhome + "/.ssh/authorized_keys" do
-  source username + "/ssh.pub"
+  only_if { run_context.has_cookbook_file_in_cookbook?(cookbook_name, sshpub) }
+  source sshpub
   mode 0600
   owner username
   group "kollokusers"
   ignore_failure true
 end
+
+begin
+include_recipe "users::" + username 
+rescue Chef::Exceptions::RecipeNotFound
+end
+
 end

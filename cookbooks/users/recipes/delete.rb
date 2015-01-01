@@ -1,6 +1,6 @@
 ## Used for testing only
 
-node[:users].each do |user|
+node[:kollokusers].each do |user|
   username = user[:username]
   userhome = "/home/" + username 
 
